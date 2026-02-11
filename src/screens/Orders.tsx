@@ -230,7 +230,8 @@ export const Orders: React.FC = () => {
                 <div className="flex justify-between mb-2">
                   <span className="text-sm">Total:</span>
                   <span className="text-lg text-[var(--color-primary)]">
-                    ${selectedOrder.total.toFixed(2)}
+                    ${selectedOrder.total?.toFixed(2)
+}
                   </span>
                 </div>
               </div>

@@ -24,7 +24,7 @@ export async function insertOrderToSupabase(order: OrderInsert) {
 
   const { data, error } = await supabase
     .from("orders")
-    .upsert(order, { onConflict: "id" }) // 👈 requires `id` to be UNIQUE/PK
+    .upsert(order, { onConflict: "order_no" })
     .select("id")
     .single();
 
@@ -37,10 +37,13 @@ export async function insertOrderToSupabase(order: OrderInsert) {
     });
     throw error;
   }
-
   console.log("✅ order inserted:", data);
   return data;
+  
 }
+
+
+
 
 
 

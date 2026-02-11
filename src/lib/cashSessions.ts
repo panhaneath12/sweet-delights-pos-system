@@ -20,11 +20,16 @@ export async function upsertCashSessionToSupabase(session: CashSession) {
     )
     .select("id")
     .single();
+if (error) {
+  console.error("❌ upsertCashSession failed:", {
+    message: error.message,
+    details: error.details,
+    hint: error.hint,
+    code: error.code,
+  });
+  throw error;
+}
 
-  if (error) {
-    console.error("❌ upsertCashSession failed:", error);
-    throw error;
-  }
 
   return data;
 }

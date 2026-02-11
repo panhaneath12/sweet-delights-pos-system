@@ -93,7 +93,8 @@ export const VariantModal: React.FC<VariantModalProps> = ({
         {/* Product Info */}
         <div>
           <h4 className="mb-1">{product.name}</h4>
-          <p className="text-[var(--color-text-secondary)]">Base Price: ${product.basePrice.toFixed(2)}</p>
+          <p className="text-[var(--color-text-secondary)]">Base Price: ${product.basePrice?.toFixed(2)
+}</p>
         </div>
 
         {/* Variants */}
@@ -119,7 +120,8 @@ export const VariantModal: React.FC<VariantModalProps> = ({
                       >
                         {variant.name}
                         {variant.extraPrice > 0 && (
-                          <span className="ml-1 text-xs">+${variant.extraPrice.toFixed(2)}</span>
+                          <span className="ml-1 text-xs">+${variant.extraPrice?.toFixed(2)
+}</span>
                         )}
                       </button>
                     );
@@ -161,7 +163,8 @@ export const VariantModal: React.FC<VariantModalProps> = ({
           <div className="flex items-center justify-between mb-4">
             <span className="text-lg">Item Total:</span>
             <span className="text-2xl text-[var(--color-primary)]">
-              ${calculateTotal().toFixed(2)}
+              ${calculateTotal()?.toFixed(2)
+}
             </span>
           </div>
         </div>

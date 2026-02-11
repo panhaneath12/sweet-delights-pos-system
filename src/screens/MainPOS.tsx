@@ -248,7 +248,8 @@ export const MainPOS: React.FC = () => {
             <div className="border-t border-[var(--color-border)] p-4 space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--color-text-secondary)]">Subtotal:</span>
-                <span>${calculateSubtotal().toFixed(2)}</span>
+                <span>${calculateSubtotal()?.toFixed(2)
+}</span>
               </div>
 
               <div className="flex justify-between text-sm">
@@ -265,12 +266,14 @@ export const MainPOS: React.FC = () => {
 
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--color-text-secondary)]">Tax (10%):</span>
-                <span>${calculateTax().toFixed(2)}</span>
+                <span>${calculateTax()?.toFixed(2)
+}</span>
               </div>
 
               <div className="flex justify-between text-xl pt-3 border-t border-[var(--color-border)]">
                 <span>Total:</span>
-                <span className="text-[var(--color-primary)]">${calculateTotal().toFixed(2)}</span>
+                <span className="text-[var(--color-primary)]">${calculateTotal()?.toFixed(2)
+}</span>
               </div>
             </div>
           )}
@@ -308,7 +311,8 @@ export const MainPOS: React.FC = () => {
                 onClick={() => setPaymentModalOpen(true)}
                 disabled={cart.length === 0}
               >
-                Pay ${calculateTotal().toFixed(2)}
+                Pay ${calculateTotal()?.toFixed(2)}
+
               </Button>
             </div>
           </div>

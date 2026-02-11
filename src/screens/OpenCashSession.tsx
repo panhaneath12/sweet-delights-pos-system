@@ -141,7 +141,8 @@ export const OpenCashSession: React.FC = () => {
                   <div>
                     <p className="text-xs">Opening Amount</p>
                     <p className="text-sm text-[var(--color-text-primary)]">
-                      ${lastSession.openingAmount.toFixed(2)}
+                      ${lastSession.openingAmount?.toFixed(2)
+}
                     </p>
                   </div>
                 </div>
@@ -152,7 +153,8 @@ export const OpenCashSession: React.FC = () => {
                     <div>
                       <p className="text-xs">Closing Amount</p>
                       <p className="text-sm text-[var(--color-text-primary)]">
-                        ${lastSession.closingAmount.toFixed(2)}
+                        ${lastSession.closingAmount?.toFixed(2)
+}
                       </p>
                     </div>
                   </div>

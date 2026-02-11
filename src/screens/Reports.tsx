@@ -4,6 +4,7 @@ import { Download, DollarSign, ShoppingCart, TrendingUp, ArrowLeft, Printer } fr
 import { AppHeader } from '../components/AppHeader';
 import { Button } from '../components/Button';
 import { getOrders, getCurrentUser, getCurrentSession, getUsers } from '../utils/storage';
+import { formatMoney } from '../utils/format';
 
 export const Reports: React.FC = () => {
   const navigate = useNavigate();
@@ -56,7 +57,8 @@ export const Reports: React.FC = () => {
       o.orderNo,
       new Date(o.createdAt).toLocaleString(),
       o.items.length,
-      o.total.toFixed(2),
+      o.total?.toFixed(2)
+,
       o.payments.map(p => p.method).join(', '),
     ]);
     
@@ -118,7 +120,8 @@ export const Reports: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs text-[var(--color-text-secondary)]">Total Sales</p>
-                <p className="text-2xl text-green-600">${totalSales.toFixed(2)}</p>
+                <p className="text-2xl text-green-600">${totalSales?.toFixed(2)
+}</p>
               </div>
             </div>
           </div>
@@ -143,7 +146,8 @@ export const Reports: React.FC = () => {
               <div>
                 <p className="text-xs text-[var(--color-text-secondary)]">Avg Order Value</p>
                 <p className="text-2xl text-purple-600">
-                  ${totalOrders > 0 ? (totalSales / totalOrders).toFixed(2) : '0.00'}
+                  ${totalOrders > 0 ? (totalSales / totalOrders)?.toFixed(2)
+ : '0.00'}
                 </p>
               </div>
             </div>
@@ -156,7 +160,8 @@ export const Reports: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs text-[var(--color-text-secondary)]">Cash Sales</p>
-                <p className="text-2xl text-orange-600">${cashPayments.toFixed(2)}</p>
+                <p className="text-2xl text-orange-600">${cashPayments?.toFixed(2)
+}</p>
               </div>
             </div>
           </div>
@@ -177,7 +182,8 @@ export const Reports: React.FC = () => {
                         style={{ width: `${(amount / totalSales) * 100}%` }}
                       />
                     </div>
-                    <span className="text-sm w-20 text-right">${amount.toFixed(2)}</span>
+                    <span className="text-sm w-20 text-right">${amount?.toFixed(2)
+}</span>
                     <span className="text-xs text-[var(--color-text-secondary)] w-12 text-right">
                       {((amount / totalSales) * 100).toFixed(0)}%
                     </span>
@@ -200,17 +206,20 @@ export const Reports: React.FC = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--color-text-secondary)]">Opening Amount:</span>
-                <span>${currentSession.openingAmount.toFixed(2)}</span>
+                <span>${currentSession.openingAmount?.toFixed(2)
+}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--color-text-secondary)]">Cash in Drawer:</span>
                 <span className="text-green-600">
-                  ${(currentSession.openingAmount + cashPayments).toFixed(2)}
+                  ${(currentSession.openingAmount + cashPayments)?.toFixed(2)
+}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--color-text-secondary)]">Non-Cash:</span>
-                <span>${nonCashPayments.toFixed(2)}</span>
+                <span>${nonCashPayments?.toFixed(2)
+}</span>
               </div>
             </div>
           </div>
@@ -261,7 +270,7 @@ export const Reports: React.FC = () => {
                         {order.payments.map(p => p.method).join(', ')}
                       </td>
                       <td className="px-6 py-4 text-right">
-                        ${order.total.toFixed(2)}
+                        ${formatMoney(order.total)}
                       </td>
                       <td className="px-6 py-4 text-right">
                         <Button 

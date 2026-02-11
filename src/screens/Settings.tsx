@@ -105,7 +105,8 @@ export const Settings: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--color-text-secondary)]">Opening Amount:</span>
-                <span>${currentSession.openingAmount.toFixed(2)}</span>
+                <span>${currentSession.openingAmount?.toFixed(2)
+}</span>
               </div>
             </div>
           </div>

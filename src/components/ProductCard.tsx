@@ -2,6 +2,7 @@ import React from "react";
 import { Plus } from "lucide-react";
 import type { Product } from "../types";
 import placeholder from "../asset/placeholder.jpg"; // ✅ import
+import { formatMoney } from "../utils/format";
 
 interface ProductCardProps {
   product: Product;
@@ -52,9 +53,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAdd }) => {
 
       <div className="p-4">
         <h4 className="mb-1 line-clamp-1">{product.name}</h4>
-        <p className="text-[var(--color-primary)]">
-          ${((product as any).basePrice ?? (product as any).base_price ?? 0).toFixed(2)}
-        </p>
+<p className="text-[var(--color-primary)]">
+  {formatMoney((product as any).basePrice ?? (product as any).base_price ?? 0)}
+</p>
       </div>
     </div>
   );

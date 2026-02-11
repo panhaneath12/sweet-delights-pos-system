@@ -468,7 +468,7 @@ export const AdminProducts: React.FC = () => {
                         <td className="px-6 py-4 text-sm text-[var(--color-text-secondary)]">
                           {category?.name || "Unknown"}
                         </td>
-                        <td className="px-6 py-4">${product.basePrice.toFixed(2)}</td>
+                        <td className="px-6 py-4">${product.basePrice?.toFixed(2)}</td>
                         <td className="px-6 py-4">
                           <StatusBadge variant={product.active ? "success" : "default"}>
                             {product.active ? "Active" : "Inactive"}

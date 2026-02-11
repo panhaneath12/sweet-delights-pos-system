@@ -33,7 +33,8 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({
           )}
           {item.lineDiscount && item.lineDiscount > 0 && (
             <div className="text-xs text-green-600 mt-1">
-              Discount: -${item.lineDiscount.toFixed(2)}
+              Discount: -${item.lineDiscount?.toFixed(2)
+}
             </div>
           )}
         </div>
@@ -74,9 +75,11 @@ export const CartItemRow: React.FC<CartItemRowProps> = ({
           </button>
         </div>
         <div className="text-right">
-          <p className="text-sm">${item.lineTotal.toFixed(2)}</p>
+          <p className="text-sm">${item.lineTotal?.toFixed(2)
+}</p>
           <p className="text-xs text-[var(--color-text-secondary)]">
-            ${(item.lineTotal / item.quantity).toFixed(2)} each
+            ${(item.lineTotal / item.quantity)?.toFixed(2)
+} each
           </p>
         </div>
       </div>

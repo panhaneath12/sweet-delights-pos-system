@@ -10,7 +10,7 @@ import type { User, Category, Product } from "../types";
 
 export const mockUsers: User[] = [
   {
-    id: "user_admin_local",
+    id: crypto.randomUUID(),
     name: "Owner (Local)",
     username: "admin",
     role: "ADMIN",

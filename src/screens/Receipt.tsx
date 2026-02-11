@@ -44,7 +44,8 @@ export const Receipt: React.FC = () => {
     setPrinted(true);
   };
 
-  const fmt = (n: number) => `$${Number(n ?? 0).toFixed(2)}`;
+  const fmt = (n: number) => `$${Number(n ?? 0)?.toFixed(2)
+}`;
 
   const formatDateTime = (dateString: string) => {
     const d = new Date(dateString);

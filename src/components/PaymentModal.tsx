@@ -44,7 +44,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     }
 
     if (paymentAmount > remaining) {
-      setError(`Amount cannot exceed remaining balance of $${remaining.toFixed(2)}`);
+      setError(`Amount cannot exceed remaining balance of $${remaining?.toFixed(2)
+}`);
       return;
     }
 
@@ -75,7 +76,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     if (selectedMethod !== 'CASH') return;
     const received = parseFloat(cashReceived);
     if (isNaN(received) || received < remaining) {
-      setError(`Cash received must be at least $${remaining.toFixed(2)}`);
+      setError(`Cash received must be at least $${remaining?.toFixed(2)
+}`);
       return;
     }
     setAmount(remaining.toString());
@@ -111,14 +113,16 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
             <div>
               <p className="text-sm text-[var(--color-text-secondary)] mb-1">Total Due</p>
               <p className="text-3xl text-[var(--color-primary)]">
-                ${totalDue.toFixed(2)}
+                ${totalDue?.toFixed(2)
+}
               </p>
             </div>
             {totalPaid > 0 && (
               <div className="text-right">
                 <p className="text-sm text-[var(--color-text-secondary)] mb-1">Remaining</p>
                 <p className={`text-2xl ${remaining < 0.01 ? 'text-green-600' : 'text-orange-600'}`}>
-                  ${remaining.toFixed(2)}
+                  ${remaining?.toFixed(2)
+}
                 </p>
               </div>
             )}
@@ -175,7 +179,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               <div>
                 <label className="block mb-2 text-sm">Change</label>
                 <div className="px-4 py-3 rounded-lg bg-white border-2 border-[var(--color-border)] text-lg">
-                  ${calculateChange().toFixed(2)}
+                  ${calculateChange()?.toFixed(2)
+}
                 </div>
               </div>
             </div>
@@ -231,7 +236,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span>${payment.amount.toFixed(2)}</span>
+                    <span>${payment.amount?.toFixed(2)
+}</span>
                     <button
                       onClick={() => handleRemovePayment(payment.id)}
                       className="p-1 rounded hover:bg-red-100 text-[var(--color-error)]"
